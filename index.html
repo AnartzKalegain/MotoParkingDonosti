@@ -7,22 +7,20 @@
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-Frame-Options" content="DENY" />
-  <meta content="Un mapa con los parkings de moto disponibles en Donostia-San Sebastian." name="description" />
-  <meta content="Mapa Aparcamientos de Moto en Donostia-San Sebastian" property="og:title" />
-    <meta
-      content="Descubre todos los aparcamientos de Motos disponibles en Donostia-San Sebastian"
-      property="og:description" />
-    <meta content="Mapa Aparcamientos de Moto en Donostia-San Sebastian" property="twitter:title" />
-    <meta
-      content="Descubre todos los aparcamientos de Motos disponibles en Donostia-San Sebastian"
-      property="twitter:description" />
-    <meta property="og:type" content="website" />
-    <meta content="/img/og-image.png" property="og:image" />
-    <meta content="/img/og-image.png" property="twitter:image" />
-    <meta content="summary_large_image" name="twitter:card" />
+  <meta name="description" content="Mapa con todos los aparcamientos de moto en Donostia-San Sebastián. Encuentra fácilmente dónde aparcar tu moto en Donosti: calles, barrios y plazas disponibles." />
+  <meta property="og:title" content="Mapa de Aparcamientos de Moto en Donostia-San Sebastián" />
+  <meta property="og:description" content="Encuentra fácilmente dónde aparcar tu moto en Donosti gracias a este mapa interactivo con todos los aparcamientos de moto." />
+  <meta property="og:image" content="https://motoparking.akalegain.com/img/og-image.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://motoparking.akalegain.com" />
+
+  <meta name="twitter:title" content="Mapa de Aparcamientos de Moto en Donostia-San Sebastián" />
+  <meta name="twitter:description" content="Descubre dónde aparcar tu moto en Donosti: consulta este mapa con todos los aparcamientos disponibles en San Sebastián." />
+  <meta name="twitter:image" content="https://motoparking.akalegain.com/img/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#000000">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <title>Aparcamientos Moto Donostia</title>
+  <title>Aparcamientos de Moto en Donostia - Dónde aparcar la moto en San Sebastián</title>
 
   <!-- Leaflet CSS y JS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
@@ -40,7 +38,34 @@
 </head>
 <body>
 
-<div id="map"></div>
+  <header>
+    <h1>Mapa de Aparcamientos de Moto en Donostia - San Sebastián</h1>
+    <p>
+      Encuentra todos los <strong>aparcamientos de moto en Donostia</strong>. 
+      Este mapa interactivo te muestra dónde aparcar tu moto en San Sebastián, 
+      barrio por barrio, con información de calles y metros disponibles.
+    </p>
+  </header>
+
+<main>
+    <div id="map"></div>
+
+    <section>
+      <h2>Dónde aparcar la moto en Donosti</h2>
+      <p>
+        Gracias a este mapa puedes localizar rápidamente <em>aparcabicis y parkings de moto</em> 
+        distribuidos por la ciudad. Haz clic en un punto para abrir la ubicación en 
+        <a href="https://www.google.com/maps" target="_blank" rel="noopener">Google Maps</a>.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      Fuente: Ayuntamiento de Donostia-San Sebastián.  
+      Proyecto independiente para ayudar a motoristas a encontrar <strong>parkings de moto en Donosti</strong>.
+    </p>
+  </footer>
 
 <script>
   // 1) Crear el mapa
