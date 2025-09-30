@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mapa Aparcamientos Moto</title>
+
+  <!-- Leaflet CSS y JS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+
+  <style>
+    html, body { height: 100%; margin: 0; padding: 0; }
+    #map { height: 100%; width: 100%; }
+    .tooltip-table th { padding: 2px 8px 2px 2px; text-align: left; }
+  </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script>
+  // 1) Crear el mapa
+  const map = L.map('map').setView([43.3183, -1.9812], 13);
+
+  // 2) Añadir tile layer
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 20
+  }).addTo(map);
+
+  // 3) Cargar GeoJSON externo
+  fetch('aparcamientos.json')
+    .then(response => response.json())
+    .then(data => {
+      L.geoJSON(data, {
+        onEachFeature: (feature, layer) => {
+          // Tooltip en tabla
+          const fields = ["NomCalle", "Barrio", "MetroLinea"];
+          const aliases = ["Calle", "Barrio", "Metros"];
+          const table = `<table class="tooltip-table">
+            ${fields.map((f,i) => `<tr><th>${aliases[i]}</th><td>${feature.properties[f]}</td></tr>`).join('')}
+          </table>`;
+          layer.bindTooltip(table, {sticky: true});
+
+          // Evento de click → abrir Google Maps
+          layer.on('click', () => {
+            const [lon, lat] = feature.geometry.coordinates;
+            const url = `https://www.google.com/maps?q=${lat},${lon}`;
+            window.open(url, '_blank');
+          });
+        },
+        pointToLayer: (feature, latlng) => {
+          return L.marker(latlng); // aquí podrías usar iconos personalizados
+        }
+      }).addTo(map);
+    });
+</script>
+
+</body>
+</html>
